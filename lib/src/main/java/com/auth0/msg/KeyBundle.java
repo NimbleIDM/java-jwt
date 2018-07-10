@@ -1,4 +1,4 @@
-package com.auth0.jwt.oicmsg;
+/*package com.auth0.jwt.oicmsg;
 
 import com.auth0.jwt.exceptions.oicmsg_exceptions.*;
 import com.google.common.collect.ImmutableMap;
@@ -518,3 +518,4 @@ public class KeyBundle {
 
 }
 
+*/
