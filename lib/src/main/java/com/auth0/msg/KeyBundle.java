@@ -1,4 +1,7 @@
 package com.auth0.msg;
+
+import java.util.List;
+
 /*package com.auth0.jwt.oicmsg;
 
 import com.auth0.jwt.exceptions.oicmsg_exceptions.*;
@@ -30,6 +33,11 @@ public class KeyBundle {
 	public void addKey(Key rsaKey) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public List<Key> getKeys() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 /*
     final private static Logger logger = LoggerFactory.getLogger(KeyBundle.class);

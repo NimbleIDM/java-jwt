@@ -20,6 +20,11 @@ public class KeyJar {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public KeyBundle getKeyBundle() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 /*
     private boolean verifySSL;
     private KeyBundle keyBundle;
