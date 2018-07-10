@@ -6,13 +6,13 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.binary.StringUtils;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
@@ -44,8 +44,8 @@ public abstract class AbstractMessage implements Message {
         this.reset();
         this.input = input;
         String msgJson = StringUtils.newStringUtf8(Base64.decodeBase64(input));
-        AbstractMessage msg = mapper.readValue(msgJson, this.getClass());
-        this.claims = msg.getClaims();
+    	Map<String, Object> newClaims = mapper.readValue(msgJson, new TypeReference<Map<String,Object>>(){});
+        this.claims = newClaims;
     }
 
     /**
@@ -55,7 +55,7 @@ public abstract class AbstractMessage implements Message {
      * @return an urlEncoded string
      */
     public String toUrlEncoded() throws SerializationException, JsonProcessingException {
-        String jsonMsg = mapper.writeValueAsString(this);
+        String jsonMsg = mapper.writeValueAsString(this.claims);
         String urlEncodedMsg = Base64.encodeBase64URLSafeString(jsonMsg.getBytes(StandardCharsets.UTF_8));
         return urlEncodedMsg;
     }
@@ -68,8 +68,9 @@ public abstract class AbstractMessage implements Message {
         this.reset();
         this.input = input;
         try {
-            AbstractMessage msg = mapper.readValue(input, this.getClass());
-            this.claims = msg.getClaims();
+            //AbstractMessage msg = mapper.readValue(input, this.getClass());
+        	Map<String, Object> newClaims = mapper.readValue(input, new TypeReference<Map<String,Object>>(){});
+            this.claims = newClaims;
             System.out.println(this.claims);
         } catch (JsonGenerationException e) {
             e.printStackTrace();
@@ -87,7 +88,7 @@ public abstract class AbstractMessage implements Message {
      * @return a JSON String representation in the form of a hashMap mapping string -> string
      */
     public String toJson() throws SerializationException, JsonProcessingException {
-        String jsonMsg = mapper.writeValueAsString(this);
+        String jsonMsg = mapper.writeValueAsString(claims);
         if (this.error != null) {
             throw new SerializationException("Error present cannot serialize message");
         }
@@ -169,8 +170,10 @@ public abstract class AbstractMessage implements Message {
             }
 
             errorSB = new StringBuilder();
-
-            for (String claimName : claims.keySet()) {
+            Iterator<String> iterator = claims.keySet().iterator();
+            
+            while (iterator.hasNext()) {
+            	String claimName = iterator.next();
                 // if knownClaim, validate claim
                 if (ClaimsValidator.isKnownClaim(claimName)) {
                     try {
@@ -180,7 +183,7 @@ public abstract class AbstractMessage implements Message {
                     }
                 } else {
                     if (!allowCustomClaims()) {
-                        claims.remove(claimName);
+                        iterator.remove();
                     }
                 }
             }
