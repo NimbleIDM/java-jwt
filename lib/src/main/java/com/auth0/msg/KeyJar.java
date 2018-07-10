@@ -1,3 +1,4 @@
+package com.auth0.msg;
 /*
 package com.auth0.jwt.oicmsg;
 
@@ -12,9 +13,14 @@ import org.slf4j.LoggerFactory;
 import java.security.KeyException;
 import java.util.*;
 import java.util.logging.Logger;
-
+*/
 public class KeyJar {
 
+	public void addKeyBundle(String string, KeyBundle keyBundle) {
+		// TODO Auto-generated method stub
+		
+	}
+/*
     private boolean verifySSL;
     private KeyBundle keyBundle;
     private float removeAfter;
@@ -376,5 +382,5 @@ public class KeyJar {
         }
         return keyJar;
     }
-}
 */
+}

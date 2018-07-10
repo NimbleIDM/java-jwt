@@ -1,3 +1,4 @@
+package com.auth0.msg;
 /*package com.auth0.jwt.oicmsg;
 
 import com.auth0.jwt.exceptions.oicmsg_exceptions.*;
@@ -23,9 +24,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.security.KeyException;
 import java.util.*;
-
+*/
 public class KeyBundle {
 
+	public void addKey(Key rsaKey) {
+		// TODO Auto-generated method stub
+		
+	}
+/*
     final private static Logger logger = LoggerFactory.getLogger(KeyBundle.class);
     private static final Map<String, Key> K2C =
             ImmutableMap.of("RSA", new RSAKey(),
@@ -516,6 +522,5 @@ public class KeyBundle {
     }
 
 
-}
-
 */
+}

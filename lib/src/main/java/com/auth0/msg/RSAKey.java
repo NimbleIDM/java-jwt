@@ -1,3 +1,4 @@
+package com.auth0.msg;
 /*
 package com.auth0.jwt.oicmsg;
 
@@ -8,9 +9,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.*;
-
+*/
 public class RSAKey extends Key {
-
+	
+	public RSAKey(Key key, String string) {
+		
+	}
+/*
     final private static Logger logger = LoggerFactory.getLogger(RSAKey.class);
     private static Set<String> longs = new HashSet<String>(Arrays.asList("n", "e", "d", "p", "q", "dp", "dq", "di", "qi"));
     private String n;
@@ -196,6 +201,5 @@ public class RSAKey extends Key {
     private void split() {
 
     }
-
-}
 */
+}

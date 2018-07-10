@@ -1,3 +1,4 @@
+package com.auth0.msg;
 /*
 package com.auth0.jwt.oicmsg;
 
@@ -10,9 +11,10 @@ import org.slf4j.LoggerFactory;
 
 import java.nio.charset.Charset;
 import java.util.*;
-
+*/
 public class Key {
 
+	/*
     final private static Logger logger = LoggerFactory.getLogger(Key.class);
     protected String kty;
     protected String alg;
@@ -234,5 +236,5 @@ public class Key {
     protected static void deser(Object item) {
         return base64ToLong(item);
     }
-}
 */
+}
