@@ -29,6 +29,6 @@ public class ProviderConfigurationResponse extends AbstractMessage{
 
     @Override
     public boolean allowCustomClaims() {
-        return false;
+        return true;
     }
 }
