@@ -78,7 +78,7 @@ public final class ClaimsValidator {
                 }
                 break;
             case LIST:
-                if (!(value instanceof List) || (((List) value).get(0) instanceof String)) {
+                if (!(value instanceof List) || !(((List) value).get(0) instanceof String)) {
                     throw new com.auth0.jwt.exceptions.InvalidClaimException(String.format("The claim '%s' type is not appropriate for this claim'", claimName));
                 }
                 break;
