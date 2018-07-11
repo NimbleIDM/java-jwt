@@ -14,7 +14,7 @@ public class AuthorizationRequest extends AbstractMessage {
   /**
    * Required claims that need to be set.
    */
-  final List<String> requiredClaims = new ArrayList<String>();
+  protected final List<String> requiredClaims = new ArrayList<String>();
 
   /**
    * Constructor.
