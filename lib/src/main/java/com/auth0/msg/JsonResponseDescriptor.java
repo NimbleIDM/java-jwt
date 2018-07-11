@@ -29,6 +29,7 @@ public class JsonResponseDescriptor extends AbstractMessage{
 
     @Override
     public boolean allowCustomClaims() {
-        return false;
+    	//TODO: allowed before required claim check works as it should
+        return true;
     }
 }
